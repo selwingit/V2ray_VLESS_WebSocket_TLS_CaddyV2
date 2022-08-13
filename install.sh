@@ -61,6 +61,12 @@ pause
 
 # 准备工作
 apt update
+
+# 安装 WARP 
+
+wget -N https://raw.githubusercontents.com/fscarmen/warp/main/menu.sh && bash menu.sh
+
+
 apt install -y curl sudo jq
 
 # 安装V2ray最新版本
@@ -258,8 +264,8 @@ if [[ -z $proxy_site ]]; then
     while :; do
         echo -e "请输入 ${magenta}一个正确的 $none ${cyan}网址$none 用来作为 ${cyan}网站的伪装$none , 例如 https://zelikk.blogspot.com"
         echo "Input a camouflage site. When GFW visit your domain, the camouflage site will display."
-        read -p "$(echo -e "(默认site: [${cyan}https://zelikk.blogspot.com$none]):")" proxy_site
-        [[ -z $proxy_site ]] && proxy_site="https://zelikk.blogspot.com"
+        read -p "$(echo -e "(默认site: [${cyan}http://cloudreve.lee2333.com$none]):")" proxy_site
+        [[ -z $proxy_site ]] && proxy_site="http://cloudreve.lee2333.com"
 
         case $proxy_site in
         *[#$]*)
@@ -507,9 +513,7 @@ elif  [[ $netstack == "4" ]]; then
     echo -e "视频: ${cyan} https://youtu.be/Yvvm4IlouEk ${none}"
     echo "----------------------------------------------------------------"
     pause
-
-    # 安装 WARP IPv6
-    bash <(curl -L git.io/warp.sh) 6
+    
 
     # 重启 V2Ray
     echo
